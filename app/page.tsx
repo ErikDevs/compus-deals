@@ -52,7 +52,6 @@ const ListingsPage = () => {
   ];
   const [page, setPage] = useState(1);
   const totalPages = 5; // Placeholder for total pages
-  const limit = 20;
 
   const handlePageChange = (newPage: SetStateAction<number>) => {
     if (typeof newPage === "number" && newPage >= 1 && newPage <= totalPages) {
