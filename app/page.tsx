@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Hero from "@/components/Hero";
@@ -16,46 +16,46 @@ import {
 import Image from "next/image";
 
 const ListingsPage = () => {
-  const [listings, setListings] = useState([
+  const listings = [
     {
       id: 1,
       title: "Sample Listing 1",
       price: "1000",
       location: "Campus A",
-      description: "Well maitained ",
+      description: "Well maintained",
       image: "/sofa.png",
     },
     {
-      id: 1,
-      title: "Sample Listing 1",
-      price: "1000",
-      location: "Campus A",
-      description: "Well maitained ",
+      id: 2,
+      title: "Sample Listing 2",
+      price: "1200",
+      location: "Campus B",
+      description: "Newly refurbished",
       image: "/sofa.png",
     },
     {
-      id: 1,
-      title: "Sample Listing 1",
-      price: "1000",
-      location: "Campus A",
-      description: "Well maitained ",
+      id: 3,
+      title: "Sample Listing 3",
+      price: "900",
+      location: "Campus C",
+      description: "Affordable and clean",
       image: "/sofa.png",
     },
     {
-      id: 1,
-      title: "Sample Listing 1",
-      price: "1000",
-      location: "Campus A",
-      description: "Well maitained ",
+      id: 4,
+      title: "Sample Listing 4",
+      price: "1500",
+      location: "Campus D",
+      description: "Luxury item",
       image: "/sofa.png",
     },
-  ]);
+  ];
   const [page, setPage] = useState(1);
   const totalPages = 5; // Placeholder for total pages
   const limit = 20;
 
-  const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages) {
+  const handlePageChange = (newPage: SetStateAction<number>) => {
+    if (typeof newPage === "number" && newPage >= 1 && newPage <= totalPages) {
       setPage(newPage);
     }
   };
