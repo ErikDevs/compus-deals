@@ -3,9 +3,7 @@
 import { SetStateAction, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Hero from "@/components/Hero";
-import { SubscriptionMetrics } from "@/components/Stats";
-import SearchInput from "@/components/SearchItems";
+
 import {
   Select,
   SelectContent,
@@ -14,42 +12,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
+import { listings } from "@/constants";
 
-const ListingsPage = () => {
-  const listings = [
-    {
-      id: 1,
-      title: "Sample Listing 1",
-      price: "1000",
-      location: "Campus A",
-      description: "Well maintained",
-      image: "/sofa.png",
-    },
-    {
-      id: 2,
-      title: "Sample Listing 2",
-      price: "1200",
-      location: "Campus B",
-      description: "Newly refurbished",
-      image: "/sofa.png",
-    },
-    {
-      id: 3,
-      title: "Sample Listing 3",
-      price: "900",
-      location: "Campus C",
-      description: "Affordable and clean",
-      image: "/sofa.png",
-    },
-    {
-      id: 4,
-      title: "Sample Listing 4",
-      price: "1500",
-      location: "Campus D",
-      description: "Luxury item",
-      image: "/sofa.png",
-    },
-  ];
+const AllListing = () => {
   const [page, setPage] = useState(1);
   const totalPages = 5; // Placeholder for total pages
 
@@ -58,17 +23,12 @@ const ListingsPage = () => {
       setPage(newPage);
     }
   };
-
   return (
-    <div className="container mx-auto p-4">
-      <Hero />
-      <SubscriptionMetrics />
-      <SearchInput />
+    <div>
       <ul className="flex items-center gap-4">
         <li>
           <h1 className="text-2xl font-bold my-8">Latest Listings</h1>
         </li>
-
         <Select>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select campus" />
@@ -96,6 +56,7 @@ const ListingsPage = () => {
               <p className="text-sm text-gray-500">{listing.location}</p>
               <p className="font-semibold">{listing.price}</p>
               <p>{listing.description}</p>
+              <p>{listing.status[0]}</p>
             </CardContent>
           </Card>
         ))}
@@ -133,4 +94,4 @@ const ListingsPage = () => {
   );
 };
 
-export default ListingsPage;
+export default AllListing;

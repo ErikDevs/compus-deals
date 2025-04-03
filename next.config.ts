@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
       "@/lib/*": ["./lib/*"],
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
