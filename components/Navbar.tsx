@@ -13,9 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import ThemeSwitcher from "./ToggleTheme";
 import { usePathname } from "next/navigation";
-
 import { useSession } from "next-auth/react";
-import { signOut } from "@/auth";
 import { getInitials } from "@/lib/utils";
 
 export function Navbar() {
