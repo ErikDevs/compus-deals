@@ -36,15 +36,24 @@ const authenticator = async () => {
   }
 };
 
-const ImageUpload = ({ onFileChange }: any) => {
-  const IKUploadRef = useRef(null);
+const ImageUpload = ({
+  onFileChange,
+}: {
+  onFileChange: (filePath: string) => void;
+}) => {
+  const IKUploadRef = useRef<HTMLInputElement | null>(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
-  const onError = (error: any) => {
+  interface ErrorResponse {
+    message: string;
+    [key: string]: unknown;
+  }
+
+  const onError = (error: ErrorResponse) => {
     console.log(error);
   };
 
-  const onSuccess = (res: any) => {
+  const onSuccess = (res: { filePath: string }) => {
     setFile(res);
     onFileChange(res.filePath);
     toast.success("Image upload successfull");
@@ -58,7 +67,9 @@ const ImageUpload = ({ onFileChange }: any) => {
     >
       <IKUpload
         className="hidden"
-        ref={IKUploadRef}
+        ref={(instance) => {
+          IKUploadRef.current = instance as HTMLInputElement | null;
+        }}
         onError={onError}
         onSuccess={onSuccess}
         fileName="test-upload.png"
